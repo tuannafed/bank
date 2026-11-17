@@ -1,0 +1,24 @@
+{
+  "name": "bank",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "build": "pnpm --filter web build",
+    "test": "pnpm --filter @bank/core test",
+    "typecheck": "pnpm -r typecheck",
+    "db:migrate:local": "pnpm --filter api db:migrate:local",
+    "db:migrate:remote": "pnpm --filter api db:migrate:remote",
+    "deploy": "pnpm build && pnpm --filter api deploy",
+    "deploy:cf": "bash scripts/deploy.sh"
+  },
+  "packageManager": "pnpm@10.28.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd",
+      "sharp"
+    ]
+  }
+}

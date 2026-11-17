@@ -1,0 +1,16 @@
+node_modules
+dist
+.wrangler
+.dev.vars
+*.local
+
+# >>> caw (claude-agent-team) >>>
+# machine-local only — the rest of .claude/ is committed; regenerate these via caw init / /caw-setup
+.agents/
+.claude/skills/
+.claude/logs/
+.claude/caw.config.json
+.claude/.caw-backup/
+.claude/settings.local.json
+skills-lock.json
+# <<< caw (claude-agent-team) <<<

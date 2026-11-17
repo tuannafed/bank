@@ -1,0 +1,36 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bank",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  // One Worker serves both the API (/api/*) and the PWA build.
+  "assets": {
+    "directory": "../web/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bank",
+      // Replace with the id printed by: pnpm wrangler d1 create bank
+      "database_id": "58f12dc0-4e57-415f-9b0f-0bdc41c489d8",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    // e.g. https://<your-team>.cloudflareaccess.com (Zero Trust > Settings > Custom pages)
+    "ACCESS_TEAM_DOMAIN": "https://falling-haze-dbc7.cloudflareaccess.com",
+    // Optional: Application Audience (AUD) tag of the Access application
+    "ACCESS_AUD": "",
+    // Admins (comma-separated). They are let in on first login and can invite other users.
+    // Everyone else must be invited from the app (Quản lý → Người dùng).
+    "ADMIN_EMAILS": "tuanna.fed@gmail.com",
+    "DEEPSEEK_BASE_URL": "https://api.deepseek.com",
+    "DEEPSEEK_MODEL": "deepseek-flash",
+    "MONTHLY_DEBT_BUDGET_VND": "28000000"
+  },
+  // Secret (not in this file): wrangler secret put DEEPSEEK_API_KEY
+  "observability": { "enabled": true }
+}

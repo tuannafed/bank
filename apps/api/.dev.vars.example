@@ -1,0 +1,3 @@
+DEEPSEEK_API_KEY=sk-...
+# Local only: skips Cloudflare Access. Pick the user with header X-Dev-Email (default: first ADMIN_EMAILS).
+DEV_BYPASS_AUTH=true
